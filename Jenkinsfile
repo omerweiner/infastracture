@@ -1,4 +1,4 @@
-node {
+// node {
   stage('SCM') {
     checkout scm
   }
@@ -8,7 +8,7 @@ node {
       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
     }
   }
-}
+// }
 
 
 
