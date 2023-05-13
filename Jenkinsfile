@@ -12,7 +12,7 @@ node {
 
 
 
-// // Uses Declarative syntax to run commands inside a container.
+// // sUses Declarative syntax to run commands inside a container.
 // pipeline {
 
 //     agent { 
