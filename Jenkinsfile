@@ -12,6 +12,7 @@ pipeline {
       
 //         node {
      stage('SCM') {
+        steps {
        checkout scm
      }
      stage('SonarQube Analysis') {
@@ -19,6 +20,7 @@ pipeline {
        withSonarQubeEnv() {
          sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.projectName='jenkins'"
        }
+     }
      }
  //   }
       
