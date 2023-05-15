@@ -14,6 +14,7 @@ pipeline {
     stages{
 //         node {
         stage('SCM') {
+            steps{
           checkout scm
         }
         stage('SonarQube Analysis') {
@@ -21,6 +22,7 @@ pipeline {
           withSonarQubeEnv() {
             sh "${scannerHome}/bin/sonar-scanner"
           }
+        }
 //         }
       }
  }
