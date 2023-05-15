@@ -1,4 +1,15 @@
-node {
+pipeline {
+agent any
+stages {
+ stage("Code Checkout from Github") {
+  steps {
+   
+   //checkout the code command
+  }
+ }
+   stage('Code Quality Check via SonarQube') {
+   steps {
+       node {
   stage('SCM') {
     checkout scm
   }
@@ -9,19 +20,11 @@ node {
     }
   }
 }
-
-
-
-pipeline {
-    agent any
-    stages {
-        stage('checkout_code') {
-           echo "hahaha"
-        }
-        stage('test'){
-            
-                 echo "ha22222222"
-            
-        }
-    }
-}
+               }
+           }
+       }
+   }
+   stage("Install Project Dependencies") {
+   steps {
+      
+           }
