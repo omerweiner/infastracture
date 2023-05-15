@@ -1,5 +1,8 @@
+
+
   pipeline {
         agent none
+        stages{
         stage('SonarQube analysis') {
         steps {
             script{
@@ -10,6 +13,7 @@
                     -Dsonar.projectName=reactapp"
             }
             }
+        }
         }
     }
       }
