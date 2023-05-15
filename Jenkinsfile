@@ -9,21 +9,23 @@
 //     }
 //   }
 // }
+
+
+
 pipeline {
     agent any
-    stages{
-//         node {
+    stages {
         stage('SCM') {
-            steps{
-          checkout scm
+            steps {
+                checkout scm
+            }
         }
-        stage('SonarQube Analysis') {
-          def scannerHome = tool 'sonar';
-          withSonarQubeEnv() {
-            sh "${scannerHome}/bin/sonar-scanner"
-          }
-        }
-//         }
-      }
- }
+         stage('SonarQube Analysis')
+             steps {
+              def scannerHome = tool 'sonar';
+              withSonarQubeEnv() {
+              sh "${scannerHome}/bin/sonar-scanner"
+                  }
+             }        
+    }
 }
