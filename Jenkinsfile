@@ -19,9 +19,9 @@ pipeline {
            echo "hahaha"
         }
         stage('test'){
-             steps {
+            
                  echo "ha22222222"
-             }
+            
         }
     }
 }
