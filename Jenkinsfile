@@ -8,3 +8,4 @@ stage('SonarQube Analysis') {
     sh "${scannerHome}/bin/sonar-scanner"
     }
 }
+}
