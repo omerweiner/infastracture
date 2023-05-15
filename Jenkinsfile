@@ -9,3 +9,10 @@ stage('SonarQube Analysis') {
     }
 }
 }
+
+node {
+
+    stage('checkout_code'){
+        echo "haha"
+    }
+}
