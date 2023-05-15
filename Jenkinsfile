@@ -1,22 +1,15 @@
-
-pipeline {
-  agent any
-  stages {
-    stage('SCM') {
-     steps {
-      checkout scm
-     }
-        }
+  pipeline {
+        agent none
         stage('SonarQube analysis') {
-         steps {
-            script {
-            // requires SonarQube Scanner 2.8+
-            scannerHome = tool 'sonar'
+        steps {
+            script{
+            def scannerHome = tool 'sonar';
+            withSonarQubeEnv('sonarqube') {
+                sh "${tool("sonarscan")}/bin/sonar-scanner \
+                    -Dsonar.projectKey=reactapp \
+                    -Dsonar.projectName=reactapp"
             }
-            withSonarQubeEnv('sonar') {
-            sh "${scannerHome}/bin/sonar-scanner"
             }
-               }
         }
-  }
-}
+    }
+      }
