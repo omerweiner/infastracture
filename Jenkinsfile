@@ -14,9 +14,11 @@ stages {
     checkout scm
   }
   stage('SonarQube Analysis') {
+    steps {
     def scannerHome = tool 'sonar';
     withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
+    }
     }
   }
 }
