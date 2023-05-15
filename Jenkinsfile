@@ -1,3 +1,4 @@
+
 pipeline {
   agent any
   stages {
@@ -7,7 +8,7 @@ pipeline {
           // requires SonarQube Scanner 2.8+
           scannerHome = tool 'sonar'
         }
-        withSonarQubeEnv('SonarQube Scanner') {
+        withSonarQubeEnv() {
           sh "${scannerHome}/bin/sonar-scanner"
         }
       }
