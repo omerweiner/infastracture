@@ -1,32 +1,27 @@
-// node {
-//   stage('SCM') {
-//     checkout scm
-//   }
-//   stage('SonarQube Analysis') {
-//     def scannerHome = tool 'sonar';
-//     withSonarQubeEnv() {
-//       sh "${scannerHome}/bin/sonar-scanner"
-//     }
-//   }
-// }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def scannerHome = tool 'sonar';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+  }
+}
 
 
 
 pipeline {
     agent any
     stages {
-        stage('SCM') {
-            steps {
-                checkout scm
-            }
+        stage('checkout_code') {
+           echo "hahaha"
         }
-        stage('SonarQube Analysis'){
+        stage('test'){
              steps {
-              def scannerHome = tool 'sonar';
-              withSonarQubeEnv() {
-              sh "${scannerHome}/bin/sonar-scanner"
-              }
-                  }
-             }        
+                 echo "ha22222222"
+             }
+        }
     }
 }
