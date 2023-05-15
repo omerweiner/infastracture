@@ -12,7 +12,7 @@
 pipeline {
     agent any
     stages{
-        node {
+//         node {
         stage('SCM') {
           checkout scm
         }
@@ -21,7 +21,7 @@ pipeline {
           withSonarQubeEnv() {
             sh "${scannerHome}/bin/sonar-scanner"
           }
-        }
+//         }
       }
  }
 }
