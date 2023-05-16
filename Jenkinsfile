@@ -1,4 +1,4 @@
-node {
+ode {
 stage('SCM') {
     checkout scm
 }
@@ -14,7 +14,17 @@ node {
     stage('checkout_code'){
 checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'omer', url: 'https://github.com/omerweiner/infastracture.git']])    }
 
-        stage('checkout_code'){
-        echo "haha"
+        stage('Build - Code'){
+        echo "Building code now"
+    }
+
+            stage('Test'){
+        echo "Testing code now"
+    }
+
+
+            stage('Package-code'){
+        echo "Package code "
     }
 }
+  
