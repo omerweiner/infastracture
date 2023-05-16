@@ -1,4 +1,4 @@
-ode {
+node {
 stage('SCM') {
     checkout scm
 }
@@ -11,6 +11,7 @@ stage('SonarQube Analysis') {
 }
 
 node {
+    stages{
     stage('checkout_code'){
 checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'omer', url: 'https://github.com/omerweiner/infastracture.git']])    }
 
@@ -26,5 +27,6 @@ checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfi
             stage('Package-code'){
         echo "Package code "
     }
+}
 }
   
