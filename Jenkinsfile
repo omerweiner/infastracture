@@ -20,7 +20,7 @@ pipeline {
         
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar') {
+                withSonarQubeEnv('SonarQube') {
                     script {
                         sh "sonar-scanner"
                     }
