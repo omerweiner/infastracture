@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('checkout_code') {
             steps {
@@ -11,20 +11,39 @@ pipeline {
                 )
             }
         }
-        
+
         stage('SCM') {
             steps {
                 checkout scm
             }
         }
-        
+
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    script {
-                        sh "sonar-scanner"
+                script {
+                    def scannerHome = tool 'sonar'
+                    withSonarQubeEnv() {
+                        sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
+            }
+        }
+
+        stage('Build - Code') {
+            steps {
+                echo "Building code now"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Testing code now"
+            }
+        }
+
+        stage('Package-code') {
+            steps {
+                echo "Package code"
             }
         }
     }
