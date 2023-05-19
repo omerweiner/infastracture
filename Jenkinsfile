@@ -49,8 +49,10 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
-//                 sh 'echo "env = archiveArtifacts artifacts: "**/*.war", fingerprint: true"'
-                archiveArtifacts artifacts: '**/*.war', fingerprint: true
+                archiveArtifacts artifacts: "**/*.war", fingerprint: true, onlyIfSuccessful: false, allowEmptyArchive: true, 
+                artifactManager: 'Default', caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
+                includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
+
 
             }
         }
