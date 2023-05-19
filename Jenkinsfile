@@ -33,6 +33,8 @@ pipeline {
             steps {
                 echo "Building code now"
                 sh 'mvn clean package'
+                sh 'ls'
+
             }
         }
 
