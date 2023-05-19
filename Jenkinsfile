@@ -24,18 +24,17 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+  stage('SonarQube Analysis') {
             steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    script {
-                        def scannerHome = tool 'SonarQube'
-                        withSonarQubeEnv() {
-                            sh "${scannerHome}/bin/sonar-scanner"
-                        }
+                script {
+                    def scannerHome = tool 'sonar'
+                    withSonarQubeEnv() {
+                        sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
         }
+
 
         stage('Build - Code') {
             steps {
@@ -43,7 +42,7 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'ls'
                 echo "${env.BUILD_NUMBER}"
-//                 sh 'echo "1111" | sudo -S docker build -t image:${env.BUILD_NUMBER} .'
+                sh 'echo "1111" | sudo -S docker build -t image:${env.BUILD_NUMBER} .'
 //                 sh 'echo "1111" | sudo -S docker images'
             }
         }
