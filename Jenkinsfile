@@ -32,6 +32,7 @@ pipeline {
         stage('Build - Code') {
             steps {
                 echo "Building code now"
+                sh 'mvn clean package'
             }
         }
 
