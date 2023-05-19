@@ -56,9 +56,9 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
-                archiveArtifacts artifacts: "**/*.war", onlyIfSuccessful: false, allowEmptyArchive: true, 
-                    caseSensitive: false, defaultExcludes: true, excludes: '',
-                    include: "**/hello_world.build-number-${env.BUILD_NUMBER}.war"
+                archiveArtifacts files: "**/hello_world.build-number-${env.BUILD_NUMBER}.war",
+                    onlyIfSuccessful: false, allowEmptyArchive: true, caseSensitive: false,
+                    defaultExcludes: true, excludes: '', fingerprint: true
             }
         }
     }
