@@ -58,7 +58,7 @@ pipeline {
                 echo "Package code"
                 archiveArtifacts artifacts: "**/*.war", onlyIfSuccessful: false, allowEmptyArchive: true, 
                     caseSensitive: false, defaultExcludes: true, excludes: '',
-                    includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
+                    include: "**/hello_world.build-number-${env.BUILD_NUMBER}.war"
             }
         }
     }
