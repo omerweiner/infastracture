@@ -44,6 +44,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing code now"
+                archiveArtifacts artifacts: '**/*.war', fingerprint: true
             }
         }
 
