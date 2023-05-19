@@ -42,7 +42,7 @@ pipeline {
                 echo "Building code now"
                 sh 'mvn clean package'
                 sh 'ls'
-                echo ${env.BUILD_NUMBER}
+                echo "${env.BUILD_NUMBER}"
 //                 sh 'echo "1111" | sudo -S docker build -t image:${env.BUILD_NUMBER} .'
 //                 sh 'echo "1111" | sudo -S docker images'
             }
