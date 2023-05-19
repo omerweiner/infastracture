@@ -34,7 +34,7 @@ pipeline {
                 echo "Building code now"
                 sh 'mvn clean package'
                 sh 'ls'
-                sh 'echo "env = ${env.BUILD_NUMBER}"'
+                sh 'echo "env = archiveArtifacts artifacts: "**/*.war", fingerprint: true"'
 //                 sh 'sudo docker build -t image.${env.BUILD_NUMBER}'
 //                 sh 'sudo docker images'
 
