@@ -34,9 +34,9 @@ pipeline {
                 echo "Building code now"
                 sh 'mvn clean package'
                 sh 'ls'
-                sh 'echo "${env.BUILD_NUMBER}"'
-                sh 'sudo docker build -t image.${env.BUILD_NUMBER}'
-                sh 'sudo docker images'
+                sh 'echo "env = ${env.BUILD_NUMBER}"'
+//                 sh 'sudo docker build -t image.${env.BUILD_NUMBER}'
+//                 sh 'sudo docker images'
 
             }
         }
