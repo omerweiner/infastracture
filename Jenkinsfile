@@ -56,7 +56,7 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
-                archiveArtifacts files: "**/hello_world.build-number-${env.BUILD_NUMBER}.war"
+                archiveArtifacts artifacts: "**/*.war", fingerprint: true
                  
             }
         }
