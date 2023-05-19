@@ -57,10 +57,9 @@ pipeline {
             steps {
                 echo "Package code"
                 archiveArtifacts artifacts: "**/*.war", fingerprint: true, onlyIfSuccessful: false, allowEmptyArchive: true, 
-                    artifactManager: 'Default', caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
+                    caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
                     includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
             }
         }
     }
 }
-
