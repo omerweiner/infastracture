@@ -57,7 +57,7 @@ pipeline {
             steps {
                 echo "Package code"
                 archiveArtifacts artifacts: "**/*.war", fingerprint: true, onlyIfSuccessful: false, allowEmptyArchive: true, 
-                    caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
+                    caseSensitive: false, defaultExcludes: true, excludes: '', fingerprint: true, 
                     includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
             }
         }
