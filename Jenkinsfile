@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('checkout_code') {
             steps {
                 checkout scmGit(
@@ -20,10 +26,12 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                script {
-                    def scannerHome = tool 'SonarQube'
-                    withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    script {
+                        def scannerHome = tool 'SonarQube'
+                        withSonarQubeEnv() {
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
                     }
                 }
             }
@@ -36,7 +44,6 @@ pipeline {
                 sh 'ls'
                 sh "sudo docker build -t image:${env.BUILD_NUMBER} ."
                 sh 'sudo docker images'
-
             }
         }
 
@@ -50,11 +57,10 @@ pipeline {
             steps {
                 echo "Package code"
                 archiveArtifacts artifacts: "**/*.war", fingerprint: true, onlyIfSuccessful: false, allowEmptyArchive: true, 
-                artifactManager: 'Default', caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
-                includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
-
-
+                    artifactManager: 'Default', caseSensitive: false, defaultExcludes: true, excludes: '', fingerprintingDisabled: false, 
+                    includes: "**/hello_world.build-number-${env.BUILD_NUMBER}.war", latestOnly: false
             }
         }
     }
 }
+
