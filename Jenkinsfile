@@ -50,6 +50,7 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
+                archiveArtifacts artifacts: '**/*.war', fingerprint: true
             }
         }
     }
