@@ -48,7 +48,7 @@ pipeline {
 
         stage('Package-code') {
             steps {
-                echo "Package code
+                echo "Package code"
 //                 sh 'echo "env = archiveArtifacts artifacts: "**/*.war", fingerprint: true"'
                 archiveArtifacts artifacts: '**/*.war', fingerprint: true
 
