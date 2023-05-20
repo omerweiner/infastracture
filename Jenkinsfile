@@ -56,6 +56,7 @@ pipeline {
             steps {
                 echo "Package code"
                 sh 'tar -czvf package-$BUILD_ID.tar.gz *'
+                archive '*.tar.gz'
                  
             }
         }
