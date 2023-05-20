@@ -55,7 +55,7 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
-                sh 'tar -czvf package-$BUILD_ID.tar.gz
+                sh 'tar -czvf package-$BUILD_ID.tar.gz'
                  
             }
         }
