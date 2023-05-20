@@ -41,7 +41,7 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'ls'
                 echo "${env.BUILD_NUMBER}"
-                sh "echo \"1111\" | sudo -S docker build -t image:${env.BUILD_NUMBER} ."
+//                 sh "echo \"1111\" | sudo -S docker build -t image:${env.BUILD_NUMBER} ."
 //                 sh 'echo "1111" | sudo -S docker images'
             }
         }
@@ -55,7 +55,7 @@ pipeline {
         stage('Package-code') {
             steps {
                 echo "Package code"
-                archiveArtifacts artifacts: "**/*.war", fingerprint: true
+                sh 'tar -czvf package-$BUILD_ID.tar.gz
                  
             }
         }
