@@ -41,8 +41,8 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'ls'
                 echo "${env.BUILD_NUMBER}"
-                sh '''echo \"1111\" | sudo -S docker build -t test.1 .'''
-//                 sh 'echo "1111" | sudo -S docker images'
+                sh ''' sudo -S docker build -t test.1 .'''
+                sh 'sudo -S docker images'
             }
         }
 
