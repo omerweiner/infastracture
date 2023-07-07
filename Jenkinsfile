@@ -25,8 +25,10 @@ pipeline {
         }
        stage('Dockerfile-compile') {
             steps {
-              sh 'docker build -t  module6 .'
-              sh 'docker run -itd module6 '
+              sh 'pwd'
+              sh 'cd cd kubespray/contrib/terraform/aws/'
+              sh 'terraform init'
+              sh 'terraform plan -out plan -var-file=credentials.tfvars'
             }
         }
 
