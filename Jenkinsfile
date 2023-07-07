@@ -27,7 +27,9 @@ pipeline {
             steps {
               sh 'pwd'
               sh 'cd'
-              sh 'cd cd kubespray/contrib/terraform/aws/'
+              sh 'pwd'
+              sh 'cd  kubespray/contrib/terraform/aws/'
+              sh 'pwd'
               sh 'terraform init'
               sh 'terraform plan -out plan -var-file=credentials.tfvars'
             }
