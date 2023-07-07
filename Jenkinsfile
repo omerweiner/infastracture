@@ -29,7 +29,6 @@ pipeline {
               sh 'cd kubespray'
               sh 'pwd'
               sh 'terraform init'
-             # sh 'terraform plan -out plan -var-file=credentials.tfvars'
             }
         }
 
