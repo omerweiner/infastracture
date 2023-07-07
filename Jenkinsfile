@@ -35,7 +35,7 @@ pipeline {
 
         stage('Build - Code') {
             steps {
-                echo "build code
+                echo "build code"
             }
         }
 
