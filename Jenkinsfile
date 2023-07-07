@@ -35,8 +35,7 @@ pipeline {
 
         stage('Build - Code') {
             steps {
-
-
+                echo "build code
             }
         }
 
