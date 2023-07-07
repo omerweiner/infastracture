@@ -25,8 +25,11 @@ pipeline {
         }
        stage('Dockerfile-compile') {
             steps {
+              sh 'git clone https://github.com/kubernetes-sigs/kubespray.git'
+              sh 'cd kubespray'
+              sh 'pwd'
               sh 'terraform init'
-              sh 'terraform plan -out plan -var-file=credentials.tfvars'
+             # sh 'terraform plan -out plan -var-file=credentials.tfvars'
             }
         }
 
