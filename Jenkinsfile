@@ -25,10 +25,9 @@ pipeline {
         }
        stage('Dockerfile-compile') {
             steps {
-              sh 'git clone https://github.com/kubernetes-sigs/kubespray.git'
-              sh 'cd kubespray'
-              sh 'pwd'
-              sh 'terraform init'
+              sh 'docker images'
+              sh 'docker run -itd -p 8088:8088 module7_jenkins'
+              sh 'docker ps -a'
             }
         }
 
