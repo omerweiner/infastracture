@@ -26,6 +26,7 @@ pipeline {
        stage('Dockerfile-compile') {
             steps {
               sh 'public_ip=$(curl -s https://api.ipify.org)'
+              sh 'export MY_IP="$public_ip"'
               sh 'docker images'
               sh 'docker run -itd --name jenkins.$BUILD_ID  -p 8088:8088 module7_jenkins'
               sh 'docker ps -a'
