@@ -28,7 +28,7 @@ pipeline {
             steps {
               sh 'docker images'
               sh 'docker run -itd --name jenkins.$BUILD_ID  -p 8088:8088 module7_jenkins'
-'
+
             }
         }
 
@@ -41,7 +41,7 @@ pipeline {
               sh 'docker logs jenkins.$BUILD_ID'
               sh 'docker inspect jenkins.$BUILD_ID'
               sh 'docker stop jenkins.$BUILD_ID'
-              sh 'docker rm jenkins.$BUILD_ID
+              sh 'docker rm jenkins.$BUILD_ID'
             }
         }
 
