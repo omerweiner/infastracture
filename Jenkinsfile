@@ -59,7 +59,7 @@ pipeline {
             sh "docker tag module7_jenkins:latest ${imageName}"
 
             // Log in to Nexus Artifactory
-            sh "docker login 127.0.0.1:8084 -u <username> -p <password>"
+            sh "docker login 127.0.0.1:8084 -u admin -p 1"
 
             // Push the tagged image to Nexus Artifactory
             sh "docker push 127.0.0.1:8084/docker_private/${imageName}"
