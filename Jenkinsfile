@@ -50,7 +50,7 @@ pipeline {
     steps {
         script {
             // Get the current build ID
-            def buildId = env.BUILD_ID
+            def buildId = $BUILD_ID
 
             // Define the Docker image name with build ID
             def imageName = "module7_jenkins:${buildId}"
