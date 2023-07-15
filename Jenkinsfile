@@ -47,17 +47,22 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Tag the Docker image
-                    def imageTag = "127.0.0.1:8084/docker_private/module7_jenkins:latest"
-                    sh "docker tag module7_jenkins:latest ${imageTag}"
+                     // Get the current build ID
+                    def buildId = env.BUILD_ID
+        
+                    // Define the Docker image name with build ID
+                    def imageName = "module7_jenkins:${buildId}"
+        
+                    // Tag the latest local image with build ID
+                    sh "docker tag module7_jenkins:latest ${imageName}"
         
                     // Log in to Nexus Artifactory
-                    sh "docker login 127.0.0.1:8084 -u admin -p 1111"
+                    sh "docker login 127.0.0.1:8084 -u <username> -p <password>"
         
-                    // Push the Docker image to Nexus Artifactory
-                    sh "docker push ${imageTag}"
-                }
+                    // Push the tagged image to Nexus Artifactory
+                    sh "docker push 127.0.0.1:8084/docker_private/${imageName}"
             }
+        }
         }
 
 
