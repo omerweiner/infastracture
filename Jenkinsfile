@@ -24,41 +24,24 @@ pipeline {
                 checkout scm
             }
         }
-       stage('Dockerfile-compile') {
+       stage('Docker-container deployment') {
             steps {
-                script {
-                    // Retrieve the public IP address using the script
-                    def publicIp = sh(returnStdout: true, script: 'curl -s https://api.ipify.org').trim()
-
-                    // Set the IP address as an environment variable
-                    env.MY_IP = publicIp
-
-                    // Optional: Print the IP address for verification
-                    //echo "My IP address is: $publicIp"
-                }
-                
               sh 'docker images'
               sh 'docker run -itd --name jenkins.$BUILD_ID  -p 8088:8088 module7_jenkins'
+'
+            }
+        }
+
+
+ 
+
+        stage('Docker container Test') {
+            steps {
               sh 'docker ps -a'
               sh 'docker logs jenkins.$BUILD_ID'
               sh 'docker inspect jenkins.$BUILD_ID'
               sh 'docker stop jenkins.$BUILD_ID'
-              sh 'docker rm jenkins.$BUILD_ID'
-            
-
-            }
-        }
-
-
-        stage('Build - Code') {
-            steps {
-                echo "build code"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo "Testing code now"
+              sh 'docker rm jenkins.$BUILD_ID
             }
         }
 
