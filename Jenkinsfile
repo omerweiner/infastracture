@@ -37,12 +37,12 @@ pipeline {
                     echo "My IP address is: $publicIp"
                 }
                 
-             # sh 'public_ip=$(curl -s https://api.ipify.org)'
-              #sh 'export MY_IP="$public_ip"'
+             // sh 'public_ip=$(curl -s https://api.ipify.org)'
+              //sh 'export MY_IP="$public_ip"'
               sh 'docker images'
               sh 'docker run -itd --name jenkins.$BUILD_ID  -p 8088:8088 module7_jenkins'
               sh 'docker ps -a'
-              #sh 'curl http:/$public_ip:8088/hello-world-war-1.0.0/ '
+              //sh 'curl http:/$public_ip:8088/hello-world-war-1.0.0/ '
               sh 'docker stop jenkins.$BUILD_ID'
               sh 'docker rm jenkins.$BUILD_ID'
             
