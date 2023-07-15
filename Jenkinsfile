@@ -44,7 +44,23 @@ pipeline {
               sh 'docker rm jenkins.$BUILD_ID'
             }
         }
+        stage('Push Docker Image') {
+        steps {
+            script {
+                // Tag the Docker image
+                def imageTag = "127.0.0.1:8084/docker_private/module7_jenkins:$BUILD_ID"
+                sh "docker tag module7_jenkins:$BUILD_ID ${imageTag}"
+    
+                // Log in to Nexus Artifactory
+                sh "docker login 127.0.0.1:8084 -u admin -p 1111"
+    
+                // Push the Docker image to Nexus Artifactory
+                sh "docker push ${imageTag}"
+            }
+        }
+    }
 
+        
         stage('Package-code') {
             steps {
                 echo "Package code"
