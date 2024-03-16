@@ -6,7 +6,8 @@
 trigger:
 - develop
 
-# No pool section needed (defaults to the organization's default agent pool)
+pool:
+  name: Default  # Replace with the actual name of your agent pool if different
 
 steps:
 - script: echo Hello, world!
