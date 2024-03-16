@@ -6,8 +6,7 @@
 trigger:
 - develop
 
-pool:
-  vmImage: ubuntu-latest
+# No pool section needed (defaults to the organization's default agent pool)
 
 steps:
 - script: echo Hello, world!
