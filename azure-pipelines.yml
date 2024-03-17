@@ -36,7 +36,9 @@ steps:
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       replaceExistingArchive: true
 
-  - task: Docker@2  # Notice the indentation here (one level deeper)
+
+  - task: Docker@2
     inputs:
       command: 'build'
       Dockerfile: '**/Dockerfile'
+      privileged: true
