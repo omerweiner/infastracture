@@ -36,8 +36,6 @@ steps:
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       replaceExistingArchive: true
 
-  - task: DockerCompose@0
+  - task: CmdLine@2
     inputs:
-      containerregistrytype: 'Container Registry'
-      dockerComposeFile: '**/docker-compose.yml'
-      action: 'Run a Docker Compose command'
+      script: 'sudo -S docker build -f .'
