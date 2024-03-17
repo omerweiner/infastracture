@@ -35,10 +35,6 @@ steps:
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       replaceExistingArchive: true
-
-  - task: CmdLine@2
-    inputs:
-      script: 'sudo su -'
   - task: Docker@2
     inputs:
       command: 'build'
