@@ -35,8 +35,9 @@ steps:
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       replaceExistingArchive: true
-  - task: Docker@2
+
+  - task: DockerCompose@0
     inputs:
-      command: 'build'
-      Dockerfile: '**/Dockerfile'
-      privileged: true
+      containerregistrytype: 'Container Registry'
+      dockerComposeFile: '**/docker-compose.yml'
+      action: 'Run a Docker Compose command'
